@@ -1,4 +1,4 @@
-const router = require('expres').Router();
+const router = require('express').Router();
 const WorkoutSession = require('../models/WorkoutSession.js');
 
 // Add exercises to the most recent workout plan
@@ -84,3 +84,5 @@ router.get('./api/workouts/range', (req, res) => {
         res.status(400).json(err);
     });
 });
+
+module.exports = router; 

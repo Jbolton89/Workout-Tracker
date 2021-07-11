@@ -41,6 +41,6 @@ const SessionSchema = new Schema({
 });  
    
   
-const Session = mongoose.model("Session", SessionSchema);
+const WorkoutSession = mongoose.model("Session", SessionSchema);
   
-module.exports = Session;
+module.exports = WorkoutSession;

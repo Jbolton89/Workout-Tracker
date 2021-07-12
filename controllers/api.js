@@ -24,7 +24,7 @@ router.put('/workouts/:id', (req, res) => {
 });
 
 // Add new exercises to a new plan
-router.post('./workouts', ({ body }, res ) => { 
+router.post('/workouts', ({ body }, res ) => { 
     WorkoutSession.create(body)
         .then(Workouts => { 
             res.json(Workouts); 
@@ -35,7 +35,7 @@ router.post('./workouts', ({ body }, res ) => {
 });
 
 // View total duration of seven workouts on stats page
-router.get('/api/workouts', (req, res) => { 
+router.get('/workouts', (req, res) => { 
     WorkoutSession.aggregate([{
         $addFields: { $sum: '$exercise.duration'}
 }])
@@ -62,7 +62,7 @@ router.get('/api/workouts', (req, res) => {
 // }
 
 // View combined weight of exercises from past 7 workouts of stats page
-router.get('./api/workouts/range', (req, res) => { 
+router.get('/workouts/range', (req, res) => { 
     WorkoutSession.aggregate([{ 
         $addFields: {
             weeklyDuration: { 

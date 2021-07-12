@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout-tracker-jb', { 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/vast-mountain-93750', { 
     useNewUrlParser: true, 
     useFindandModify: false, 
     useUnifiedTopology: true, 

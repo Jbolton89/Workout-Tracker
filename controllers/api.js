@@ -37,9 +37,14 @@ router.post('/workouts', ({ body }, res ) => {
 // View total duration of seven workouts on stats page
 router.get('/workouts', (req, res) => { 
     WorkoutSession.aggregate([{
-        $addFields: { $sum: '$exercise.duration'}
-}])
-    .then(Workouts => { 
+        $addFields: {
+            totalDuration: {
+                $sum: '$exercise.duration'
+            }
+        }
+    }])
+    .then(Workouts => {
+        console.log(Workouts)
         res.json(Workouts); 
     })
     .catch(err => { 
@@ -48,35 +53,17 @@ router.get('/workouts', (req, res) => {
 }); 
 
 // View combined weight of exercises from past 7 workouts of stats page
-// router.get('./api/workouts/range', (req, res) => { 
-//     WorkoutSession.aggregate([{ 
-//         $addFields: {
-//             weeklyDuration: { 
-//                 $match:  { $day : < 8 , "WeeklyDuration': { 
-//                     $sum: $exercises.duration 
-//                 },
-//             },
-//         },
-//         { }
-//     }])
-// }
-
-// View combined weight of exercises from past 7 workouts of stats page
 router.get('/workouts/range', (req, res) => { 
     WorkoutSession.aggregate([{ 
         $addFields: {
-            weeklyDuration: { 
+            totalDuration: { 
                 $sum: '$exercises.duration' } 
             },
         },
-        { $sort: { 
-                day: -1,
-            },
-        },
-        { $limit:
-            7 
-        }
+        // { $match: { $gte: { day: new Date(new Date().setDate(new Date().getDate() - 7)) }}}
     ])
+    .sort({_id:-1})
+    .limit(7)
     .then(Workouts => { 
         res.json(Workouts)
     })

@@ -29,8 +29,8 @@
 [Email: jasonbolton89@gmail.com](mailto:jasonbolton89@gmail.com)
 
   ## Screenshots
-  ![screenshot of Workouts Home](.public/images/homepage.JPG)
-  ![screenshot of Dashboard](.public/images/dashboard.JPG)
+  ![screenshot of Workouts Home](.public/images/homepage.JPEG)
+  ![screenshot of Dashboard](.public/images/dashboard.JPEG)
 
 ## App
 [The deployed app on Heroku](https://vast-mountain-93750.herokuapp.com/)
